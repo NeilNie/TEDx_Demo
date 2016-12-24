@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9DDFADE9375A2D5BC2600EB704C92A1681A73CFF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "93B5EC1475FCA513560A4546E477C0CFA8AF579C" : 9223372036854775807,
+    "9DDFADE9375A2D5BC2600EB704C92A1681A73CFF" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5FCB273A-DACB-405A-83DD-A4E4379489BA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "93B5EC1475FCA513560A4546E477C0CFA8AF579C" : "",
+    "9DDFADE9375A2D5BC2600EB704C92A1681A73CFF" : "Google%20Cloud%20Vision\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Visionary",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Visionary.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NeilNie\/TEDx_Demo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "93B5EC1475FCA513560A4546E477C0CFA8AF579C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NeilNie\/Visionary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9DDFADE9375A2D5BC2600EB704C92A1681A73CFF"
+    }
+  ]
+}

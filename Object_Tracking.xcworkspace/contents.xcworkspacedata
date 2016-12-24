@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:OpenCV Tests/OpenCV Tests.xcodeproj">
+      location = "group:/Users/YongyangNie/Desktop/TEDx_Demo/OpenCV Tests/TEDx_OpenCV_macOS.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Object_Tracking.xcodeproj">
+      location = "group:/Users/YongyangNie/Desktop/TEDx_Demo/Google Cloud Vision/TEDx_CCV_Demo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/YongyangNie/Desktop/TEDx_Demo/TEDx_OpenCV_Demo.xcodeproj">
    </FileRef>
 </Workspace>
