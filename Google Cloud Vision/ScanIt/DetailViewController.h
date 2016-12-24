@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PCAngularActivityIndicatorView.h"
-#import "WebPage.h"
-#import "TextView.h"
+#import "TextViewController.h"
 #import "PreferenceViewController.h"
 #import "ResultTableViewCell.h"
-#import "History.h"
-
-@import GoogleMobileAds;
 
 @interface DetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     
@@ -35,6 +31,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *OpenFile;
 @property (weak, nonatomic) IBOutlet UIButton *WebView;
-@property (weak, nonatomic) IBOutlet GADBannerView *banner;
 
 @end

@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-@import FirebaseAnalytics;
-
 @interface AppDelegate ()
 
 @end
@@ -18,10 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    // Configure tracker from GoogleService-Info.plist.
-    [FIRApp configure];
-    
+
     // Override point for customization after application launch.
     return YES;
 }

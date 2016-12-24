@@ -254,7 +254,6 @@ static NSString *const Google_URL = @"https://vision.googleapis.com/v1/images:an
         }
         
     }
-    [self savetoHistoryWithString];
 }
 
 -(void)LogoResultWithJson:(NSDictionary *)responseData{
@@ -379,21 +378,6 @@ static NSString *const Google_URL = @"https://vision.googleapis.com/v1/images:an
     });
     
 }
-- (IBAction)trash:(id)sender {
-    
-}
-
--(void)savetoHistoryWithString{
-    
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    History *history = [[History alloc] init];
-    history.imagePath = @"";
-    history.content = self.resultArray;
-    history.percentage = self.percentArray;
-    [realm addObject:history];
-    [realm commitWriteTransaction];
-}
 
 -(void)animationActivityIndicator{
     
@@ -423,10 +407,6 @@ static NSString *const Google_URL = @"https://vision.googleapis.com/v1/images:an
     self.resultArray = [NSMutableArray array];
     self.percentArray = [NSMutableArray array];
     
-    self.banner.adUnitID = @"ca-app-pub-7942613644553368/1563136736";
-    self.banner.rootViewController = self;
-    [self.banner loadRequest:[GADRequest request]];
-    
     [super viewDidLoad];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -442,11 +422,8 @@ static NSString *const Google_URL = @"https://vision.googleapis.com/v1/images:an
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue destinationViewController] isKindOfClass:[WebPage class]]) {
-        WebPage *destination =(WebPage *)segue.destinationViewController;
-        destination.urlString = ObjectString;
-    }else if ([[segue destinationViewController] isKindOfClass:[TextView class]]){
-        TextView *destination =(TextView *)segue.destinationViewController;
+    if ([[segue destinationViewController] isKindOfClass:[TextViewController class]]){
+        TextViewController *destination =(TextViewController *)segue.destinationViewController;
         destination.text = TextViewText;
     }
 }

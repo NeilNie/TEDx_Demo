@@ -1,6 +1,7 @@
 #Change Log
 
-##11/27/2016 
+##11/27/2016 (OpenCV iOS) ####Committer: Neil Nie
+
 - MLViewController added.
 - PRFViewController added.
 - Object tracking classes moved into new folder. Removed from project
@@ -9,7 +10,8 @@ directory.
 - Main.storyboard updated.
 - Other small changes.
 
-##11/22/2016 
+##11/22/2016 (OpenCV iOS) ####Committer: Neil Nie
+
 - macOS testing app now displays max mser.
 - Other small changes.
 - Research paper under development.
@@ -19,8 +21,8 @@ All changes until 11/19/2016 - Project resources changed. More images/template
 to process it.
 - Other small changes.
 
-##2016/11/18 22:00
-####Committer: Neil Nie 
+##2016/11/18 22:00 (OpenCV iOS)
+####Committer: Neil Nie
 
 - AppDelegate no longer learns the image.
 - In CameraViewController, the computer will learn the template and
@@ -35,7 +37,7 @@ research paper is under development. It contains detailed description
 of the project. We have to improve the frame rate. Great work! Keep
 going!
 
-##11/18/2016
+##11/18/2016 (OpenCV iOS)
 ####Committer: Neil Nie
 - ImageUtils updated.
 - MSERManager added.
@@ -43,7 +45,7 @@ going!
 - ViewController NSTableView implemented.
 - Other small changes.
 
-##11/17/2016
+##11/17/2016 (OpenCV iOS)
 ####Committer: Neil Nie
 - OpenCV MSER test (macOS) implemented.
 - Project target changed from iOS 9 to iOS 8. MSER works correctly.
@@ -60,7 +62,7 @@ OpenCV macOS framework also need to be updated. The same process
 applies. After full updated, test the result. Refer to MSER example
 project for details. Good luck.
 
-##11/15/2016
+##11/15/2016 (OpenCV iOS)
 ####Committer: Neil Nie
 - `ObjectTracking` class can no longer draw points on the output frame. 
 - `ObjectTracking Sample` `pointsPrev` and `pointsNext` are now public variables. 

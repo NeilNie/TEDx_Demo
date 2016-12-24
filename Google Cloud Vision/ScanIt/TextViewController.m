@@ -6,13 +6,13 @@
 //  Copyright © 2016 Yongyang Nie. All rights reserved.
 //
 
-#import "TextView.h"
+#import "TextViewController.h"
 
-@interface TextView ()
+@interface TextViewController ()
 
 @end
 
-@implementation TextView
+@implementation TextViewController
 
 -(void)dismissReaderViewController:(ReaderViewController *)viewController{
     

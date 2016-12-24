@@ -23,6 +23,21 @@ using namespace cv;
 
 @implementation ViewController
 
+- (void)keyDown:(NSEvent *)theEvent {
+    
+    NSLog(@"KeyEvent: %hu", theEvent.keyCode);
+    
+    if (theEvent.keyCode == 36 || theEvent.keyCode == 35) {
+        [self processImage:nil];
+    }
+    if (theEvent.keyCode == 18) {
+        [self simplify];
+    }
+    if (theEvent.keyCode == 8) {
+        [self allClear];
+    }
+}
+
 #pragma mark - NSTableView Delegate & Datasource
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
@@ -71,19 +86,67 @@ using namespace cv;
 
 #pragma mark - cv & MSER
 
+-(void)allClear{
+    self.image.image = nil;
+    self.maxMser.image = nil;
+    self.array = nil;
+    [self.tableView reloadData];
+}
+
 cv::MserFeatureDetector mserDetector;
 
 - (void) detectRegions: (cv::Mat &) gray intoVector: (std::vector<std::vector<cv::Point>> &) vector{
     mserDetector(gray, vector);
 }
 
+-(void)simplify{
+    
+    self.maxMser.image = nil;
+    self.image.image = nil;
+    self.array = [NSMutableArray array];
+    
+    cv::Mat image = [ImageUtils cvMatFromUIImage:[[NSImage alloc] initWithContentsOfFile:[self.imageArray objectAtIndex:[self.images selectedRow]]]];
+    cv::Mat testImage;
+    cv::cvtColor(image, testImage, CV_BGR2GRAY);
+    
+    
+    /* THESE ARE ALL DEFAULT VALUES */
+    int delta = 5;                  //! delta, in the code, it compares (size_{i}-size_{i-delta})/size_{i-delta}
+    int minArea = 60;               //! prune the area which bigger than maxArea
+    int maxArea = 14400;            //! prune the area which smaller than minArea
+    double maxVariation = 0.25;     //! prune the area have simliar size to its children
+    double minDiversity = 0.2;      //! trace back to cut off mser with diversity < min_diversity
+    int maxEvolution = 200;         //! for color image, the evolution steps
+    double areaThreshold = 1.01;    //! the area threshold to cause re-initialize
+    double minMargin = 0.003;       //! ignore too small margin
+    int edgeBlurSize = 0;           //! the aperture size for edge blur
+    
+    mserDetector = cv::MserFeatureDetector(delta, minArea, maxArea,
+                                           maxVariation, minDiversity, maxEvolution,
+                                           areaThreshold, minMargin, edgeBlurSize
+                                           );
+    
+    
+    std::vector<std::vector<cv::Point>> contours;
+    [self detectRegions:testImage intoVector:contours];
+    
+    std::vector<cv::Point> mser = [ImageUtils maxMser:&testImage];
+    self.maxMser.image = [ImageUtils UIImageFromCVMat:[ImageUtils mserToMat:&mser]];
+    
+    cv::Rect bound = cv::boundingRect(mser);
+    cv::rectangle(image, bound, CV_RGB(41, 257, 47));
+    
+    self.image.image = [ImageUtils UIImageFromCVMat:image];
+}
+
 -(IBAction)processImage:(id)sender{
     
     self.array = [NSMutableArray array];
+    self.maxMser.image = nil;
+    self.image.image = nil;
     
-    self.image.image = [[NSImage alloc] initWithContentsOfFile:[self.imageArray objectAtIndex:[self.images selectedRow]]];
+    cv::Mat image = [ImageUtils cvMatFromUIImage:[[NSImage alloc] initWithContentsOfFile:[self.imageArray objectAtIndex:[self.images selectedRow]]]];
     
-    cv::Mat image = [ImageUtils cvMatFromUIImage:self.image.image];
     cv::Mat testImage;
     cv::cvtColor(image, testImage, CV_BGR2GRAY);
     
@@ -123,6 +186,8 @@ cv::MserFeatureDetector mserDetector;
     
     [self.tableView reloadData];
 }
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad {
 

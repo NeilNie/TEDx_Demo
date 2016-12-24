@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Realm/Realm.h>
 #import "iOSUILib/MDButton.h"
 #import "PCAngularActivityIndicatorView.h"
 #import "DetailViewController.h"
 #import "PreferenceViewController.h"
 #import "AAPLPreviewView.h"
 
-@import GoogleMobileAds;
 @import Photos;
 
 @interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MDButtonDelegate>{
