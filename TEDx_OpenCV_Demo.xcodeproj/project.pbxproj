@@ -10,6 +10,7 @@
 		0034170E1E10390500528642 /* Media1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0034170D1E10390500528642 /* Media1.xcassets */; };
 		004EFB341DEB9B26000537AB /* PRFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004EFB331DEB9B26000537AB /* PRFViewController.m */; };
 		004EFB3A1DEB9BDA000537AB /* MLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 004EFB391DEB9BDA000537AB /* MLViewController.mm */; };
+		006A06441E1171AA0093D501 /* OpenCV_Demo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 006A06431E1171AA0093D501 /* OpenCV_Demo_icon.png */; };
 		00CD0B551DE49EFD0006D602 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CD0B541DE49EFD0006D602 /* opencv2.framework */; };
 		281E47321DC167B300AFB85D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E47311DC167B300AFB85D /* main.m */; };
 		281E47351DC167B300AFB85D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 281E47341DC167B300AFB85D /* AppDelegate.m */; };
@@ -44,6 +45,7 @@
 		004EFB331DEB9B26000537AB /* PRFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRFViewController.m; sourceTree = "<group>"; };
 		004EFB381DEB9BD9000537AB /* MLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLViewController.h; path = ../MLViewController.h; sourceTree = "<group>"; };
 		004EFB391DEB9BDA000537AB /* MLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MLViewController.mm; path = ../MLViewController.mm; sourceTree = "<group>"; };
+		006A06431E1171AA0093D501 /* OpenCV_Demo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpenCV_Demo_icon.png; sourceTree = "<group>"; };
 		00CD0B541DE49EFD0006D602 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../Documents/Developer/Resources/Frameworks/OpenCV/opencv2.framework; sourceTree = "<group>"; };
 		281E472D1DC167B300AFB85D /* TEDx_OpenCV_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDx_OpenCV_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281E47311DC167B300AFB85D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		281E47301DC167B300AFB85D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				006A06431E1171AA0093D501 /* OpenCV_Demo_icon.png */,
 				0034170D1E10390500528642 /* Media1.xcassets */,
 				281E47331DC167B300AFB85D /* AppDelegate.h */,
 				28EE38EC1DF49001006398A8 /* Info_000000_100.png */,
@@ -273,6 +276,7 @@
 				28AA98541DD7E9FC00C8F990 /* Launch Screen.storyboard in Resources */,
 				28EE38EB1DF48F7F006398A8 /* Settings_000000_100.png in Resources */,
 				281E473B1DC167B300AFB85D /* Main.storyboard in Resources */,
+				006A06441E1171AA0093D501 /* OpenCV_Demo_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

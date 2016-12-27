@@ -15,7 +15,7 @@
 		0051EE331C95EC5D001AFBB6 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0051EE301C95EC5D001AFBB6 /* delete.png */; };
 		0051EE341C95EC5D001AFBB6 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 0051EE311C95EC5D001AFBB6 /* list.png */; };
 		0051EE381C95F4F2001AFBB6 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0051EE371C95F4F2001AFBB6 /* TextViewController.m */; };
-		0060833B1CC3FFEE00A344F1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0060833A1CC3FFEE00A344F1 /* StoreKit.framework */; };
+		006A06421E11702F0093D501 /* GCV_Demo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 006A06411E11702F0093D501 /* GCV_Demo_icon.png */; };
 		007351E41C9361D300660883 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 007351E31C9361D300660883 /* main.m */; };
 		007351E71C9361D300660883 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 007351E61C9361D300660883 /* AppDelegate.m */; };
 		007351EA1C9361D300660883 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 007351E91C9361D300660883 /* ViewController.m */; };
@@ -139,6 +139,7 @@
 		0051EE361C95F4F2001AFBB6 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
 		0051EE371C95F4F2001AFBB6 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		0060833A1CC3FFEE00A344F1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		006A06411E11702F0093D501 /* GCV_Demo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GCV_Demo_icon.png; sourceTree = "<group>"; };
 		007351DF1C9361D300660883 /* TEDx_GCV_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDx_GCV_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007351E31C9361D300660883 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		007351E51C9361D300660883 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -299,7 +300,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0060833B1CC3FFEE00A344F1 /* StoreKit.framework in Frameworks */,
 				00F867461C970D7100868A70 /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				0034170B1E1035A500528642 /* Media.xcassets */,
+				006A06411E11702F0093D501 /* GCV_Demo_icon.png */,
 				284049F31D8AC53500F426FD /* iOSUILib */,
 				283C014C1D35739F00CF4E76 /* PDF Reader */,
 				007351E51C9361D300660883 /* AppDelegate.h */,
@@ -683,6 +684,7 @@
 				28447F8A1D35BB7A00FBA11D /* Reader-Export@3x.png in Resources */,
 				0034170C1E1035A500528642 /* Media.xcassets in Resources */,
 				28B3DDD11D31E889007CDC90 /* photo_album.png in Resources */,
+				006A06421E11702F0093D501 /* GCV_Demo_icon.png in Resources */,
 				00C2E74D1C9621FC004F2B22 /* saved.png in Resources */,
 				00FD66B41C95FB70007B1332 /* refresh.png in Resources */,
 				28447F881D35BB7A00FBA11D /* Reader-Export.png in Resources */,
