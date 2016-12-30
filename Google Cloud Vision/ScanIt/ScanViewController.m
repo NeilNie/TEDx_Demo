@@ -6,7 +6,7 @@
 //  Copyright © 2016 Yongyang Nie. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ScanViewController.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * SessionRunningContext = &SessionRunningContext;
@@ -18,13 +18,12 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 };
 
 typedef NS_ENUM( NSInteger, CVScanMode ) {
-    CVScanModeFace,
     CVScanModeLabel,
     CVScanModeText,
     CVScanModeQR
 };
 
-@interface ViewController ()
+@interface ScanViewController ()
 
 // Utilities.
 @property(nonatomic) CGPoint startPoint;
@@ -43,7 +42,47 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
 
 @end
 
-@implementation ViewController
+@implementation ScanViewController
+
+#pragma mark - Private
+
+-(void)animationActivityIndicator{
+    
+    activityIndicator = [[PCAngularActivityIndicatorView alloc] initWithActivityIndicatorStyle:PCAngularActivityIndicatorViewStyleLarge];
+    activityIndicator.color = [UIColor whiteColor];
+    activityIndicator.center = self.view.center;
+    [self.view addSubview:activityIndicator];
+    [activityIndicator startAnimating];
+}
+
+#pragma mark - CloudVision Delegate
+
+-(void)requestHasError:(NSString *)error{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Opps, something went wrong" message:error preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:^{
+            NSLog(@"error: %@", error);
+        }];
+    });
+}
+
+-(void)completedRequestWithResponse:(NSMutableArray *)response{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (response.count >= 3) {
+            self.resultTextView.text = [NSString stringWithFormat:@"%@\n%@\n%@\n", [response[0] objectForKey:@"label"],
+                                        [response[1] objectForKey:@"label"],
+                                        [response[2] objectForKey:@"label"]];
+        }else if (response.count == 2){
+            self.resultTextView.text = [NSString stringWithFormat:@"%@\n%@\n", [response[0] objectForKey:@"label"],
+                                        [response[1] objectForKey:@"label"]];
+        }else{
+            self.resultTextView.text = [NSString stringWithFormat:@"%@", [response[0] objectForKey:@"label"]];
+        }
+        [activityIndicator stopAnimating];
+    });
+}
 
 #pragma mark - KVO and Notifications
 
@@ -176,22 +215,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     pickedImage = info[UIImagePickerControllerOriginalImage];
     
     imagePath = info[UIImagePickerControllerReferenceURL];
-    
-//    PHFetchResult <PHAsset *> *assets = [PHAsset fetchAssetsWithALAssetURLs:@[imagePath] options:nil];
-//    PHAsset *asset = [assets firstObject];
-//    PHImageManager *manager = [PHImageManager defaultManager];
-//    
-//    PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
-//    requestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
-//    requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-//    requestOptions.synchronous = true;
-//    
-//    [manager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:requestOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-//        if (result) {
-//            NSLog(@"success");
-//        }
-//    }];
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [picker dismissViewControllerAnimated:YES completion:NULL];
         [self performSegueWithIdentifier:@"ShowDetail" sender:nil];
@@ -254,7 +278,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
         connection.videoOrientation = previewLayer.connection.videoOrientation;
         
         // Flash set to Auto for Still Capture.
-        [ViewController setFlashMode:AVCaptureFlashModeOff forDevice:self.videoDeviceInput.device];
+        [ScanViewController setFlashMode:AVCaptureFlashModeOff forDevice:self.videoDeviceInput.device];
         
         // Capture a still image.
         [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^( CMSampleBufferRef imageDataSampleBuffer, NSError *error ) {
@@ -274,8 +298,12 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
                             if (success) {
                                 
                                 pickedImage = [UIImage imageWithData:imageData];
+                                self.cloudVision = [[CloudVision alloc] init];
+                                self.cloudVision.mode = (int)self.ScanMode;
+                                [self.cloudVision beginAnalysis:[CloudVision base64EncodeImage:pickedImage]];
+                                self.cloudVision.delegate = self;
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self performSegueWithIdentifier:@"ShowDetail" sender:nil];
+                                    [self animationActivityIndicator];
                                 });
                             }else{
                                 NSLog( @"Error occurred while saving image to photo library: %@", error );
@@ -311,7 +339,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
             break;
     }
     
-    AVCaptureDevice *videoDevice = [ViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
+    AVCaptureDevice *videoDevice = [ScanViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
     AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
     
     [self.session beginConfiguration];
@@ -322,7 +350,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     if ( [self.session canAddInput:videoDeviceInput] ) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
         
-        [ViewController setFlashMode:AVCaptureFlashModeOff forDevice:videoDevice];
+        [ScanViewController setFlashMode:AVCaptureFlashModeOff forDevice:videoDevice];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
         
         [self.session addInput:videoDeviceInput];
@@ -361,6 +389,9 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
 {
     CGPoint devicePoint = [(AVCaptureVideoPreviewLayer *)self.previewView.layer captureDevicePointOfInterestForPoint:[gestureRecognizer locationInView:gestureRecognizer.view]];
     [self focusWithMode:AVCaptureFocusModeAutoFocus exposeWithMode:AVCaptureExposureModeAutoExpose atDevicePoint:devicePoint monitorSubjectAreaChange:YES];
+}
+- (IBAction)allClear:(id)sender {
+    self.resultTextView.text = @"";
 }
 
 #pragma mark - Device Configuration
@@ -456,27 +487,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     } );
 }
 
--(void)loadBeepSound{
-    
-    // Get the path to the beep.mp3 file and convert it to a NSURL object.
-    NSString *beepFilePath = [[NSBundle mainBundle] pathForResource:@"beep" ofType:@"mp3"];
-    NSURL *beepURL = [NSURL URLWithString:beepFilePath];
-    
-    NSError *error;
-    
-    // Initialize the audio player object using the NSURL object previously set.
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:beepURL error:&error];
-    if (error) {
-        // If the audio player cannot be initialized then log a message.
-        NSLog(@"Could not play beep file.");
-        NSLog(@"%@", [error localizedDescription]);
-    }
-    else{
-        // If the audio player was successfully initialized then load it in memory.
-        [_audioPlayer prepareToPlay];
-    }
-}
-
 -(void)setUpCam{
     
     // Disable UI. The UI is enabled if and only if the session starts running.
@@ -539,7 +549,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
         
         // Start video capture.
         [self.session commitConfiguration];
-
+        
     }else{
         
         // Setup the capture session.
@@ -556,7 +566,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
             self.backgroundRecordingID = UIBackgroundTaskInvalid;
             NSError *error = nil;
             
-            AVCaptureDevice *videoDevice = [ViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:AVCaptureDevicePositionBack];
+            AVCaptureDevice *videoDevice = [ScanViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:AVCaptureDevicePositionBack];
             AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
             
             if ( ! videoDeviceInput ) {
@@ -668,7 +678,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
             }
         }
     } );
-
+    
 }
 
 #pragma mark - MDButton
@@ -696,10 +706,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     if (sender == self.btMore) {
         self.btMore.rotated = NO; //reset floating finging button
         return;
-    }
-    if (sender == self.btFace) {
-        self.indicationLb.text = @"Face and Emotions";
-        self.ScanMode = CVScanModeFace;
     }
     if (sender == self.btText) {
         self.indicationLb.text = @"Smart OCR";
@@ -741,9 +747,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
                                  self.btLabel.transform = CGAffineTransformMakeScale(1.0,.6);
                                  self.btLabel.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, +padding*2.5f), CGAffineTransformMakeScale(1.0, 1.0));
                                  
-                             } completion:^(BOOL finished) {
-                                 
-                             }];
+                             } completion:^(BOOL finished) {}];
         } else {
             [UIView animateWithDuration:duration/2
                                   delay:0.0
@@ -761,9 +765,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
                                  self.btQR.alpha = 0;
                                  self.btQR.transform = CGAffineTransformMakeTranslation(0, 0);
                                  
-                             } completion:^(BOOL finished) {
-                                 
-                             }];
+                             } completion:^(BOOL finished) {}];
         }
     }
 }
@@ -797,36 +799,17 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue destinationViewController] isKindOfClass:[DetailViewController class]]) {
         DetailViewController *destination =(DetailViewController *)segue.destinationViewController;
-        destination.pickItem = self.ScanMode;
-        destination.image = pickedImage;
+        destination.resultArray = self.cloudVision.result;
+    }else if ([[segue destinationViewController] isKindOfClass:[TextViewController class]]){
+        TextViewController *destination = (TextViewController *)segue.destinationViewController;
+        destination.text = [self.cloudVision.result objectAtIndex:0];
     }
 }
 
 @end
-
-
-//snippet
-
-//                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//                    NSString *documentsDirectory = [paths objectAtIndex:0];
-//
-//                    NSString *ImagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",@"cached"]];
-//
-//                    NSLog(@"pre writing to file");
-//                    if (![imageData writeToFile:ImagePath atomically:NO]){
-//                        NSLog(@"Failed to cache image data to disk");
-//                    }
-//                    else{
-//                        NSLog(@"the cachedImagedPath is %@",ImagePath);
-//                    }

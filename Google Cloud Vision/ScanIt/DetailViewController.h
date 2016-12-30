@@ -11,6 +11,7 @@
 #import "TextViewController.h"
 #import "PreferenceViewController.h"
 #import "ResultTableViewCell.h"
+#import "CloudVision.h"
 
 @interface DetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     
@@ -22,14 +23,10 @@
 }
 
 @property (strong, nonatomic) UIImage *image;
-@property NSUInteger pickItem;
 @property (strong, nonatomic) NSMutableArray *resultArray;
-@property (strong, nonatomic) NSMutableArray *percentArray;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *LabelConstraint;
 @property (weak, nonatomic) IBOutlet UITableView *ResultTable;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *OpenFile;
-@property (weak, nonatomic) IBOutlet UIButton *WebView;
 
 @end

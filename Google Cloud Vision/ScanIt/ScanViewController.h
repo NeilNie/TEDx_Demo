@@ -15,14 +15,15 @@
 
 @import Photos;
 
-@interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MDButtonDelegate>{
+@interface ScanViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MDButtonDelegate, CloudVisionDelegate>{
     
-    PCAngularActivityIndicatorView *ActivityIndicator;
+    PCAngularActivityIndicatorView *activityIndicator;
     NSArray *array;
     UIImage *pickedImage;
     UIImage *imagePath;
 }
 // For use in the storyboards.
+@property (weak, nonatomic) IBOutlet UITextView *resultTextView;
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet MDButton *btMore;
 @property (weak, nonatomic) IBOutlet MDButton *btFace;
@@ -34,5 +35,7 @@
 @property (nonatomic, weak) IBOutlet AAPLPreviewView *previewView;
 @property (nonatomic, weak) IBOutlet UIButton *resumeButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
+
+@property (strong, nonatomic) CloudVision *cloudVision;
 
 @end
