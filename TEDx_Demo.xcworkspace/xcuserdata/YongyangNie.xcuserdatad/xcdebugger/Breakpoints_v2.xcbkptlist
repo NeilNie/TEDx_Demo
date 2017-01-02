@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
             endingLineNumber = "84"
-            landmarkName = "-isFeature:"
+            landmarkName = "-learn:"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
@@ -39,7 +39,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "-isFeature:"
+            landmarkName = "-learn:"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "-isFeature:"
+            landmarkName = "-distance:"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
@@ -87,7 +87,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "-isFeature:"
+            landmarkName = "-isFeature:thisMSER:"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "-isFeature:"
+            landmarkName = "-isFeature:thisMSER:"
             landmarkType = "7">
             <Actions>
                <BreakpointActionProxy
@@ -121,6 +121,16 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

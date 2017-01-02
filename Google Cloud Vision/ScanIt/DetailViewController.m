@@ -26,14 +26,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *string = [self.resultArray objectAtIndex:indexPath.row];
-    
-    if ([string length] < 40) {
-        return 55;
-    }else{
-        int X = ((int)[string length] / 30) * 30 + 20;
-        return X;
-    }
+    return 55;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -65,12 +58,11 @@
     });
 }
 
-- (IBAction)listView:(id)sender {
+- (IBAction)showTextView:(id)sender {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self performSegueWithIdentifier:@"ShowTextView" sender:nil];
     });
-    
 }
 
 #pragma mark - Life Cycle
@@ -81,9 +73,7 @@
     self.LabelConstraint.constant = 0;
     self.ResultTable.backgroundColor = [UIColor clearColor];
     self.imageView.image = self.image;
-
-    self.resultArray = [NSMutableArray array];
-    
+    [self showLabel];
     [super viewDidLoad];
     
     // Do any additional setup after loading the view, typically from a nib.

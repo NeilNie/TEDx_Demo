@@ -10,10 +10,21 @@
 #import "iOSUILib/MDButton.h"
 #import "PCAngularActivityIndicatorView.h"
 #import "DetailViewController.h"
-#import "PreferenceViewController.h"
 #import "AAPLPreviewView.h"
 
 @import Photos;
+
+typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
+    AVCamSetupResultSuccess,
+    AVCamSetupResultCameraNotAuthorized,
+    AVCamSetupResultSessionConfigurationFailed
+};
+
+typedef NS_ENUM( NSInteger, CVScanMode ) {
+    CVScanModeLabel,
+    CVScanModeText,
+    CVScanModeQR
+};
 
 @interface ScanViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MDButtonDelegate, CloudVisionDelegate>{
     
@@ -26,16 +37,12 @@
 @property (weak, nonatomic) IBOutlet UITextView *resultTextView;
 @property (nonatomic, weak) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet MDButton *btMore;
-@property (weak, nonatomic) IBOutlet MDButton *btFace;
 @property (weak, nonatomic) IBOutlet MDButton *btLabel;
 @property (weak, nonatomic) IBOutlet MDButton *btText;
-@property (weak, nonatomic) IBOutlet MDButton *btQR;
 @property (weak, nonatomic) IBOutlet UILabel *indicationLb;
 
 @property (nonatomic, weak) IBOutlet AAPLPreviewView *previewView;
-@property (nonatomic, weak) IBOutlet UIButton *resumeButton;
 @property (nonatomic, weak) IBOutlet UIButton *stillButton;
-
 @property (strong, nonatomic) CloudVision *cloudVision;
 
 @end

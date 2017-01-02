@@ -59,34 +59,6 @@
                                     <action selector="btnClicked:" destination="FIO-Oa-PcR" eventType="touchUpInside" id="cdE-8r-f1c"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M84-sA-Nbm" customClass="MDButton">
-                                <rect key="frame" x="62" y="256" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.95253247019999998" green="0.4093654752" blue="0.28474447130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="QR_codeW"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="type">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnClicked:" destination="FIO-Oa-PcR" eventType="touchUpInside" id="WUr-G2-RTt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSe-M5-Wc0" customClass="MDButton">
-                                <rect key="frame" x="62" y="337" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99307268859999998" green="0.70766103270000003" blue="0.29252845049999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="wink"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="type">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnClicked:" destination="FIO-Oa-PcR" eventType="touchUpInside" id="Y6q-zr-LMi"/>
-                                </connections>
-                            </button>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxW-O2-XnU">
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
@@ -225,6 +197,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Details"/>
+                                <connections>
+                                    <action selector="details:" destination="FIO-Oa-PcR" eventType="touchUpInside" id="qCb-Ju-SIZ"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="waY-t5-PSe">
@@ -246,10 +221,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btFace" destination="jSe-M5-Wc0" id="daz-kv-AHG"/>
                         <outlet property="btLabel" destination="gIy-sj-gPK" id="uCF-rZ-vFa"/>
                         <outlet property="btMore" destination="AIP-qj-gnc" id="vgz-pR-bMp"/>
-                        <outlet property="btQR" destination="M84-sA-Nbm" id="Mca-Zf-Kht"/>
                         <outlet property="btText" destination="kgB-yg-SpC" id="KXS-YV-l3m"/>
                         <outlet property="cameraButton" destination="jFV-cp-HYR" id="U2D-wV-DFA"/>
                         <outlet property="indicationLb" destination="Jdy-Ic-oz9" id="FLI-ce-4jf"/>
@@ -294,7 +267,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999998807907104" contentMode="center" tableViewCell="ctC-4U-oz2" id="eHG-HZ-TwU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-pX-Gsu">
@@ -457,7 +430,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="QR_codeW" width="32" height="32"/>
         <image name="circle.png" width="200" height="200"/>
         <image name="circle_outter.png" width="200" height="200"/>
         <image name="close" width="48" height="48"/>
@@ -471,6 +443,5 @@
         <image name="share.png" width="495" height="454"/>
         <image name="switch_camera" width="24" height="24"/>
         <image name="text_color" width="32" height="32"/>
-        <image name="wink" width="32" height="32"/>
     </resources>
 </document>

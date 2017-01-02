@@ -11,18 +11,6 @@
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * SessionRunningContext = &SessionRunningContext;
 
-typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
-    AVCamSetupResultSuccess,
-    AVCamSetupResultCameraNotAuthorized,
-    AVCamSetupResultSessionConfigurationFailed
-};
-
-typedef NS_ENUM( NSInteger, CVScanMode ) {
-    CVScanModeLabel,
-    CVScanModeText,
-    CVScanModeQR
-};
-
 @interface ScanViewController ()
 
 // Utilities.
@@ -98,7 +86,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     // and show a preview is paused message. See the documentation of AVCaptureSessionWasInterruptedNotification for other
     // interruption reasons.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionWasInterrupted:) name:AVCaptureSessionWasInterruptedNotification object:self.session];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionInterruptionEnded:) name:AVCaptureSessionInterruptionEndedNotification object:self.session];
 }
 
 - (void)removeObservers
@@ -155,15 +142,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
                 [self.session startRunning];
                 self.sessionRunning = self.session.isRunning;
             }
-            else {
-                dispatch_async( dispatch_get_main_queue(), ^{
-                    self.resumeButton.hidden = NO;
-                } );
-            }
         } );
-    }
-    else {
-        self.resumeButton.hidden = NO;
     }
 }
 
@@ -184,28 +163,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
         reason == AVCaptureSessionInterruptionReasonVideoDeviceInUseByAnotherClient ) {
         showResumeButton = YES;
     }
-    
-    if ( showResumeButton ) {
-        // Simply fade-in a button to enable the user to try to resume the session running.
-        self.resumeButton.hidden = NO;
-        self.resumeButton.alpha = 0.0;
-        [UIView animateWithDuration:0.25 animations:^{
-            self.resumeButton.alpha = 1.0;
-        }];
-    }
-}
-
-- (void)sessionInterruptionEnded:(NSNotification *)notification
-{
-    NSLog( @"Capture session interruption ended" );
-    
-    if ( ! self.resumeButton.hidden ) {
-        [UIView animateWithDuration:0.25 animations:^{
-            self.resumeButton.alpha = 0.0;
-        } completion:^( BOOL finished ) {
-            self.resumeButton.hidden = YES;
-        }];
-    }
 }
 
 #pragma mark - UIImagePickerViewController Delegate
@@ -215,7 +172,7 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     pickedImage = info[UIImagePickerControllerOriginalImage];
     
     imagePath = info[UIImagePickerControllerReferenceURL];
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [picker dismissViewControllerAnimated:YES completion:NULL];
         [self performSegueWithIdentifier:@"ShowDetail" sender:nil];
@@ -228,34 +185,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
 }
 
 #pragma mark - Actions
-
-- (IBAction)resumeInterruptedSession:(id)sender
-{
-    dispatch_async( self.sessionQueue, ^{
-        
-        // The session might fail to start running, e.g., if a phone or FaceTime call is still using audio or video.
-        // A failure to start the session running will be communicated via a session runtime error notification.
-        // To avoid repeatedly failing to start the session running, we only try to restart the session running in the
-        // session runtime error handler if we aren't trying to resume the session running.
-        
-        [self.session startRunning];
-        self.sessionRunning = self.session.isRunning;
-        if ( ! self.session.isRunning ) {
-            dispatch_async( dispatch_get_main_queue(), ^{
-                NSString *message = NSLocalizedString( @"Unable to resume", @"Alert message when unable to resume the session running" );
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"AVCam" message:message preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"OK", @"Alert OK button" ) style:UIAlertActionStyleCancel handler:nil];
-                [alertController addAction:cancelAction];
-                [self presentViewController:alertController animated:YES completion:nil];
-            } );
-        }
-        else {
-            dispatch_async( dispatch_get_main_queue(), ^{
-                self.resumeButton.hidden = YES;
-            } );
-        }
-    } );
-}
 
 - (IBAction)selectPhoto:(UIButton *)sender {
     
@@ -392,6 +321,13 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
 }
 - (IBAction)allClear:(id)sender {
     self.resultTextView.text = @"";
+}
+
+- (IBAction)details:(id)sender {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"ShowDetail" sender:nil];
+    });
 }
 
 #pragma mark - Device Configuration
@@ -688,16 +624,12 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     self.btMore.mdButtonDelegate = self;
     self.btMore.rotated = NO;
     //invisible all related buttons
-    self.btQR.alpha = 0.f;
-    self.btFace.alpha = 0.f;
     self.btText.alpha = 0.f;
     self.btLabel.alpha = 0.f;
     
     _startPoint = CGPointMake(self.btMore.center.x - 18, self.btMore.center.y - 100);
-    self.btQR.center = _startPoint;
     self.btLabel.center = _startPoint;
     self.btText.center = _startPoint;
-    self.btFace.center = _startPoint;
     [self.btMore setImageSize:25.0f];
 }
 
@@ -715,10 +647,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
         self.indicationLb.text = @"Content and Labels";
         self.ScanMode = CVScanModeLabel;
     }
-    if (sender == self.btQR) {
-        self.indicationLb.text = @"QR Code";
-        self.ScanMode = CVScanModeQR;
-    }
 }
 
 -(void)rotationStarted:(id)sender {
@@ -731,13 +659,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
                                   delay:0.0
                                 options: (UIViewAnimationOptionAllowUserInteraction|UIViewAnimationCurveEaseOut)
                              animations:^{
-                                 self.btQR.alpha = 1;
-                                 self.btQR.transform = CGAffineTransformMakeScale(1.0,.4);
-                                 self.btQR.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, +padding*4.6f), CGAffineTransformMakeScale(1.0, 1.0));
-                                 
-                                 self.btFace.alpha = 1;
-                                 self.btFace.transform = CGAffineTransformMakeScale(1.0,.5);
-                                 self.btFace.transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(0, +padding*3.9f), CGAffineTransformMakeScale(1.0, 1.0));
                                  
                                  self.btText.alpha = 1;
                                  self.btText.transform = CGAffineTransformMakeScale(1.0,.5);
@@ -758,13 +679,6 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
                                  
                                  self.btText.alpha = 0;
                                  self.btText.transform = CGAffineTransformMakeTranslation(0, 0);
-                                 
-                                 self.btFace.alpha = 0;
-                                 self.btFace.transform = CGAffineTransformMakeTranslation(0, 0);
-                                 
-                                 self.btQR.alpha = 0;
-                                 self.btQR.transform = CGAffineTransformMakeTranslation(0, 0);
-                                 
                              } completion:^(BOOL finished) {}];
         }
     }
@@ -806,6 +720,8 @@ typedef NS_ENUM( NSInteger, CVScanMode ) {
     if ([[segue destinationViewController] isKindOfClass:[DetailViewController class]]) {
         DetailViewController *destination =(DetailViewController *)segue.destinationViewController;
         destination.resultArray = self.cloudVision.result;
+        destination.image = pickedImage;
+        
     }else if ([[segue destinationViewController] isKindOfClass:[TextViewController class]]){
         TextViewController *destination = (TextViewController *)segue.destinationViewController;
         destination.text = [self.cloudVision.result objectAtIndex:0];

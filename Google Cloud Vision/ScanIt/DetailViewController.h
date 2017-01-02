@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PCAngularActivityIndicatorView.h"
 #import "TextViewController.h"
-#import "PreferenceViewController.h"
 #import "ResultTableViewCell.h"
 #import "CloudVision.h"
 
