@@ -85,9 +85,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2805EE711DDD2E85008F44B5 /* Helpers */ = {
+		005656811E1ABFC400DB82C2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				289223071DDD10DA0090F637 /* ViewController.h */,
+				289223081DDD10DA0090F637 /* ViewController.mm */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		2805EE711DDD2E85008F44B5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				289223011DDD10DA0090F637 /* AppDelegate.h */,
+				289223021DDD10DA0090F637 /* AppDelegate.m */,
 				285184B21DDF460D000E612C /* MSERManager.h */,
 				285184B31DDF460D000E612C /* MSERManager.mm */,
 				285184AF1DDF4265000E612C /* MSERFeature.h */,
@@ -95,7 +106,7 @@
 				2805EE6E1DDD2B3F008F44B5 /* ImageUtils.h */,
 				2805EE6F1DDD2B3F008F44B5 /* ImageUtils.mm */,
 			);
-			name = Helpers;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		289222F51DDD10DA0090F637 = {
@@ -120,16 +131,9 @@
 		289223001DDD10DA0090F637 /* OpenCV Tests */ = {
 			isa = PBXGroup;
 			children = (
-				28DCF3E31DDEA173000E673C /* object_tracking.pch */,
-				289223011DDD10DA0090F637 /* AppDelegate.h */,
-				289223021DDD10DA0090F637 /* AppDelegate.m */,
-				289223071DDD10DA0090F637 /* ViewController.h */,
-				289223081DDD10DA0090F637 /* ViewController.mm */,
-				2805EE711DDD2E85008F44B5 /* Helpers */,
 				2892230C1DDD10DA0090F637 /* Main.storyboard */,
-				2892230F1DDD10DA0090F637 /* Info.plist */,
-				00DC61431DE13FFB00D7E289 /* images */,
-				008B7BF31DE152FA00B4DB7D /* Images.xcassets */,
+				005656811E1ABFC400DB82C2 /* ViewController */,
+				2805EE711DDD2E85008F44B5 /* Classes */,
 				289223041DDD10DA0090F637 /* Supporting Files */,
 			);
 			path = "OpenCV Tests";
@@ -138,6 +142,10 @@
 		289223041DDD10DA0090F637 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00DC61431DE13FFB00D7E289 /* images */,
+				008B7BF31DE152FA00B4DB7D /* Images.xcassets */,
+				2892230F1DDD10DA0090F637 /* Info.plist */,
+				28DCF3E31DDEA173000E673C /* object_tracking.pch */,
 				289223051DDD10DA0090F637 /* main.m */,
 			);
 			name = "Supporting Files";
