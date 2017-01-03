@@ -4,25 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Object_Tracking.xcscheme_^#shared#^_</key>
+		<key>OpenCV Demo (base).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>281E472C1DC167B300AFB85D</key>
+		<key>0056564A1E1ABF2B00DB82C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>281E47451DC167B300AFB85D</key>
+		<key>005656631E1ABF2B00DB82C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>281E47501DC167B300AFB85D</key>
+		<key>0056566E1E1ABF2B00DB82C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

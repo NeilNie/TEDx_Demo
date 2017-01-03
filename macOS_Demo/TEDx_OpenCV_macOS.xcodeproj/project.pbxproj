@@ -11,8 +11,8 @@
 		00CD0B531DE49EF70006D602 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CD0B521DE49EF70006D602 /* opencv2.framework */; };
 		00DC61441DE13FFB00D7E289 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 00DC61431DE13FFB00D7E289 /* images */; };
 		2805EE701DDD2B3F008F44B5 /* ImageUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2805EE6F1DDD2B3F008F44B5 /* ImageUtils.mm */; };
-		285184B11DDF4265000E612C /* MSERFeature.mm in Sources */ = {isa = PBXBuildFile; fileRef = 285184B01DDF4265000E612C /* MSERFeature.mm */; };
 		285184B41DDF460D000E612C /* MSERManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 285184B31DDF460D000E612C /* MSERManager.mm */; };
+		2878B64B1E1B2FDF0030C639 /* MSERFeature.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2878B64A1E1B2FDF0030C639 /* MSERFeature.mm */; };
 		289223031DDD10DA0090F637 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289223021DDD10DA0090F637 /* AppDelegate.m */; };
 		289223061DDD10DA0090F637 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 289223051DDD10DA0090F637 /* main.m */; };
 		289223091DDD10DA0090F637 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 289223081DDD10DA0090F637 /* ViewController.mm */; };
@@ -42,10 +42,10 @@
 		00DC61431DE13FFB00D7E289 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		2805EE6E1DDD2B3F008F44B5 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		2805EE6F1DDD2B3F008F44B5 /* ImageUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageUtils.mm; sourceTree = "<group>"; };
-		285184AF1DDF4265000E612C /* MSERFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSERFeature.h; path = ../../Object_Tracking/Algorithms/MSERFeature.h; sourceTree = "<group>"; };
-		285184B01DDF4265000E612C /* MSERFeature.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MSERFeature.mm; path = ../../Object_Tracking/Algorithms/MSERFeature.mm; sourceTree = "<group>"; };
 		285184B21DDF460D000E612C /* MSERManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSERManager.h; sourceTree = "<group>"; };
 		285184B31DDF460D000E612C /* MSERManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MSERManager.mm; sourceTree = "<group>"; };
+		2878B6491E1B2FDF0030C639 /* MSERFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSERFeature.h; path = "../../OpenCV iOS/Object_Tracking/Algorithms/MSERFeature.h"; sourceTree = "<group>"; };
+		2878B64A1E1B2FDF0030C639 /* MSERFeature.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MSERFeature.mm; path = "../../OpenCV iOS/Object_Tracking/Algorithms/MSERFeature.mm"; sourceTree = "<group>"; };
 		289222FE1DDD10DA0090F637 /* TEDx_OpenCV_macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDx_OpenCV_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		289223011DDD10DA0090F637 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		289223021DDD10DA0090F637 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,12 +97,12 @@
 		2805EE711DDD2E85008F44B5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2878B6491E1B2FDF0030C639 /* MSERFeature.h */,
+				2878B64A1E1B2FDF0030C639 /* MSERFeature.mm */,
 				289223011DDD10DA0090F637 /* AppDelegate.h */,
 				289223021DDD10DA0090F637 /* AppDelegate.m */,
 				285184B21DDF460D000E612C /* MSERManager.h */,
 				285184B31DDF460D000E612C /* MSERManager.mm */,
-				285184AF1DDF4265000E612C /* MSERFeature.h */,
-				285184B01DDF4265000E612C /* MSERFeature.mm */,
 				2805EE6E1DDD2B3F008F44B5 /* ImageUtils.h */,
 				2805EE6F1DDD2B3F008F44B5 /* ImageUtils.mm */,
 			);
@@ -288,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				289223091DDD10DA0090F637 /* ViewController.mm in Sources */,
-				285184B11DDF4265000E612C /* MSERFeature.mm in Sources */,
+				2878B64B1E1B2FDF0030C639 /* MSERFeature.mm in Sources */,
 				285184B41DDF460D000E612C /* MSERManager.mm in Sources */,
 				2805EE701DDD2B3F008F44B5 /* ImageUtils.mm in Sources */,
 				289223061DDD10DA0090F637 /* main.m in Sources */,
