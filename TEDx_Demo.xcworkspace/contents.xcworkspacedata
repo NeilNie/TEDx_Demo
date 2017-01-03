@@ -2,18 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:OpenCV iOS/TEDx_OpenCV_Demo.xcodeproj">
+      location = "group:/Users/Neil/Desktop/TEDx_Demo/OpenCV iOS/OpenCV_Demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Google Cloud Vision/TEDx_GCV_Demo.xcodeproj">
+      location = "group:/Users/Neil/Desktop/TEDx_Demo/Google Cloud Vision/GCV_Demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:macOS_Demo/TEDx_OpenCV_macOS.xcodeproj">
+      location = "group:/Users/Neil/Desktop/TEDx_Demo/OpenCV iOS Base/OpenCV_Demo_Base.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:OpenCV Demo Base/OpenCV Demo (base).xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:macOS_Demo/TEDx_OpenCV_macOS.xcodeproj">
+      location = "group:/Users/Neil/Desktop/TEDx_Demo/macOS_Demo/OpenCV_macOS.xcodeproj">
    </FileRef>
 </Workspace>
