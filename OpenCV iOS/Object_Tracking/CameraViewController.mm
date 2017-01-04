@@ -11,8 +11,6 @@
 
 #import "CameraViewController.h"
 
-#define KEY_LEARNED @"KEY_LEARNED"
-
 //this two values are dependant on defaultAVCaptureSessionPreset
 #define W (480)
 #define H (640)
@@ -77,20 +75,16 @@
         
         if(feature){
             
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSMutableArray *templates = [defaults objectForKey:KEY_LEARNED];
-            
-            for (MSERFeature *MserFeature in templates) {
+            if([[MLManager sharedInstance] isFeature: feature] ){
                 
-                if([[MLManager sharedInstance] isFeature:feature thisMSER:MserFeature] ){
-                    
-                    double tmp = [[MLManager sharedInstance] distance:feature];
-                    if (bestPoint > tmp ) {
-                        bestPoint = tmp;
-                        bestMser = &mser;
-                    }
-                    [ImageUtils drawMser: &mser intoImage: &image withColor: GREEN];
+                double tmp = [[MLManager sharedInstance] distance:feature];
+                if (bestPoint > tmp ) {
+                    bestPoint = tmp;
+                    bestMser = &mser;
                 }
+                cv::Rect bound = cv::boundingRect(*bestMser);
+                cv::rectangle(image, bound, GREEN, 3);
+                //[ImageUtils drawMser: &mser intoImage: &image withColor: GREEN];
             }
         }
     });
@@ -99,12 +93,12 @@
         
         NSLog(@"minDist: %f", bestPoint);
         NSLog(@"name: %@", [[MLManager sharedInstance] logoTemplate].name);
-        cv::Rect bound = cv::boundingRect(*bestMser);
-        cv::rectangle(image, bound, GREEN, 3); //if there is best MSER, draw green bounds around it.
+//        cv::Rect bound = cv::boundingRect(*bestMser);
+//        cv::rectangle(image, bound, GREEN, 3); //if there is best MSER, draw green bounds around it.
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.label.text = [[MLManager sharedInstance] logoTemplate].name;
-            self.label.center = CGPointMake(bound.x, bound.y);
+            //self.label.center = CGPointMake(bound.x, bound.y);
         });
     }else
         cv::rectangle(image, cv::Rect(0, 0, W, H), RED, 3);

@@ -25,11 +25,11 @@
     //mser with maximum area is
     std::vector<cv::Point> maxMser = [ImageUtils maxMser: &gray];
     
-    MSERFeature *feature = [[MSERManager sharedInstance] extractFeature: &maxMser];
-    feature.name = [self.imageArray objectAtIndex:[self.table indexPathForSelectedRow].row];
+    [MLManager sharedInstance].logoTemplate = [[MSERManager sharedInstance] extractFeature: &maxMser];
+    [MLManager sharedInstance].logoTemplate.name = [self.imageArray objectAtIndex:[self.table indexPathForSelectedRow].row];
     
     //store the feature
-    [[MLManager sharedInstance] storeTemplate:feature];
+    [[MLManager sharedInstance] storeTemplate];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Learned Successfully"
                                                     message:[NSString stringWithFormat:@"The template have been learned. numberOfHoles %li \n convexHullAreaRate: %f \n minRectAreaRate: %f \n skeletLengthRate: %f \n contourAreaRate: %f", (long)[MLManager sharedInstance].logoTemplate.numberOfHoles, [MLManager sharedInstance].logoTemplate.convexHullAreaRate, [MLManager sharedInstance].logoTemplate.minRectAreaRate, [MLManager sharedInstance].logoTemplate.skeletLengthRate, [MLManager sharedInstance].logoTemplate.contourAreaRate]
@@ -50,9 +50,6 @@
     [self learn:[UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]]];
     [[NSUserDefaults standardUserDefaults] setObject:[self.imageArray objectAtIndex:indexPath.row] forKey:@"imagename"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -72,14 +69,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idTableCell" forIndexPath:indexPath];
     cell.textLabel.text = [self.imageArray objectAtIndex:indexPath.row];
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [[MLManager sharedInstance] removeTemplate:[self.imageArray objectAtIndex:indexPath.row]];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
 }
 
 #pragma mark - Private
@@ -104,7 +93,6 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     self.imageArray = [[NSMutableArray alloc] init];
     [self.imageArray addObject:@"Cocacola Logo"];
@@ -114,7 +102,6 @@
     [self.imageArray addObject:@"coke_bottle"];
     
     [self loadPreviousLearning];
-    self.table.allowsMultipleSelection = YES;
 }
 
 - (void)didReceiveMemoryWarning {

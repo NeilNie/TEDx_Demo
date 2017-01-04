@@ -15,7 +15,7 @@
 #import <opencv2/highgui/cap_ios.h>
 #import "MSERManager.h"
 
-#define KEY_LEARNED @"KEY_LEARNED"
+#define KEY_LEARN @"KEY_LEARN"
 #define KEY_NUMBER_OF_HOLES @"KEY_NUMBER_OF_HOLES"
 #define KEY_CONVEX_AREA_RATE @"KEY_CONVEX_AREA_RATE"
 #define KEY_MIN_RECT_AREA_RATE @"KEY_MIN_RECT_AREA_RATE"
@@ -32,8 +32,6 @@
 @end
 
 @implementation MLManager
-
-#pragma mark - Constructures
 
 + (MLManager *) sharedInstance
 {
@@ -60,8 +58,6 @@
     return instance;
 }
 
-#pragma mark - Machine learning
-
 - (void) learn: (UIImage *) templateImage{
     
     cv::Mat image = [ImageUtils cvMatFromUIImage: templateImage];
@@ -84,35 +80,35 @@
     std::vector<cv::Point> normalizedMser = [ImageUtils maxMser: &normalizedImage];
     
     //remember the template
-    MSERFeature *MserTemplate = [[MSERManager sharedInstance] extractFeature: &normalizedMser];
+    self.logoTemplate = [[MSERManager sharedInstance] extractFeature: &normalizedMser];
     
     //store the feature
-    [self storeTemplate:MserTemplate];
+    [self storeTemplate];
 }
 
 - (double) distance: (MSERFeature *) feature{
     return [self.logoTemplate distace: feature];
 }
 
-- (BOOL) isFeature: (MSERFeature *) feature thisMSER:(MSERFeature *)MserTemplate{
+- (BOOL) isFeature: (MSERFeature *) feature{
     
-    if (MserTemplate.numberOfHoles != feature.numberOfHoles) {
+    if (_logoTemplate.numberOfHoles != feature.numberOfHoles) { 
         return NO; 
     }
     
-    if ( fabs(MserTemplate.convexHullAreaRate - feature.convexHullAreaRate) > 0.05) { // 0.1) {
+    if ( fabs(_logoTemplate.convexHullAreaRate - feature.convexHullAreaRate) > 0.05) { // 0.1) {
         //NSLog(@"convexHullAreaRate \t\t\t\t %f", fabs(_logoTemplate.convexHullAreaRate - feature.convexHullAreaRate));
         return NO;
     }
-    if ( fabs(MserTemplate.minRectAreaRate - feature.minRectAreaRate) > 0.05) { // 0.1) {
+    if ( fabs(_logoTemplate.minRectAreaRate - feature.minRectAreaRate) > 0.05) { // 0.1) {
         //NSLog(@"minRectAreaRate \t\t\t\t %f", fabs(_logoTemplate.minRectAreaRate - feature.minRectAreaRate));
         return NO;
     }
-    if ( fabs(MserTemplate.skeletLengthRate - feature.skeletLengthRate) > 0.02) {
+    if ( fabs(_logoTemplate.skeletLengthRate - feature.skeletLengthRate) > 0.02) {
         //NSLog(@"skeletLengthRate \t\t\t\t %f", fabs(_logoTemplate.skeletLengthRate - feature.skeletLengthRate));
         return NO;
     }
-    if ( fabs(MserTemplate.contourAreaRate - feature.contourAreaRate) > 0.1) {//0.2) {
+    if ( fabs(_logoTemplate.contourAreaRate - feature.contourAreaRate) > 0.1) {//0.2) {
         //NSLog(@"contourAreaRate \t\t\t\t %f", fabs(_logoTemplate.contourAreaRate - feature.contourAreaRate));
         return NO;
     }
@@ -170,37 +166,6 @@
     [defaults setObject:_logoTemplate.name forKey:KEY_NAME];
     
     [defaults synchronize];
-}
-
--(NSMutableArray <MSERFeature *> *)loadAllTemplates{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults objectForKey:KEY_LEARNED];
-}
-
--(void)storeTemplate:(MSERFeature *)feature{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *array = [defaults objectForKey:KEY_LEARNED];
-    [array addObject:feature];
-    [defaults setObject:array forKey:KEY_LEARNED];
-    
-    [defaults synchronize];
-}
-
--(void)removeTemplate:(NSString *)name{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *templates = [defaults objectForKey:@"KEY_LEARNED"];
-    
-    for (int i = 0; i < templates.count; i++) {
-        MSERFeature *mserFeature = [templates objectAtIndex:i];
-        if ([mserFeature.name isEqual:name]) {
-            [templates removeObjectAtIndex:i];
-            [defaults setObject:templates forKey:KEY_LEARNED];
-            [defaults synchronize];
-        }
-    }
 }
 
 @end

@@ -19,21 +19,14 @@
  */
 @interface MLManager : NSObject
 
-#pragma mark - Properties
-
 @property (strong) NSDictionary *preference;
 
 @property (strong, nonatomic) NSMutableArray <MSERFeature *> *templates;
-
 @property (strong) MSERFeature *logoTemplate;
-
-#pragma mark - Class methods
 
 + (MLManager *) sharedInstance;
 
 + (MLManager *) sharedInstanceWithPreference:(NSDictionary *)dic;
-
-#pragma mark - Instance methods 
 
 /*
  Stores feature from the biggest MSER in the templateImage
@@ -48,13 +41,9 @@
 /*
  Returns true if the given feature is similar to the one learned from the template
  */
-- (BOOL) isFeature: (MSERFeature *) feature thisMSER:(MSERFeature *)MserTemplate;
-
--(void)storeTemplate:(MSERFeature *)feature;
+- (BOOL)isFeature: (MSERFeature *) feature;
 
 - (void) storeTemplate;
-
--(void)removeTemplate:(NSString *)name;
 
 - (void) loadTemplate;
 
