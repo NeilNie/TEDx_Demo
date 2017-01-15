@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-               BuildableName = "TEDx_OpenCV_Demo.app"
-               BlueprintName = "TEDx_OpenCV_Demo"
-               ReferencedContainer = "container:TEDx_OpenCV_Demo.xcodeproj">
+               BuildableName = "OpenCV_Demo_Base.app"
+               BlueprintName = "OpenCV_Demo_Base"
+               ReferencedContainer = "container:OpenCV_Demo_Base.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-            BuildableName = "TEDx_OpenCV_Demo.app"
-            BlueprintName = "TEDx_OpenCV_Demo"
-            ReferencedContainer = "container:TEDx_OpenCV_Demo.xcodeproj">
+            BuildableName = "OpenCV_Demo_Base.app"
+            BlueprintName = "OpenCV_Demo_Base"
+            ReferencedContainer = "container:OpenCV_Demo_Base.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-            BuildableName = "TEDx_OpenCV_Demo.app"
-            BlueprintName = "TEDx_OpenCV_Demo"
-            ReferencedContainer = "container:TEDx_OpenCV_Demo.xcodeproj">
+            BuildableName = "OpenCV_Demo_Base.app"
+            BlueprintName = "OpenCV_Demo_Base"
+            ReferencedContainer = "container:OpenCV_Demo_Base.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-            BuildableName = "TEDx_OpenCV_Demo.app"
-            BlueprintName = "TEDx_OpenCV_Demo"
-            ReferencedContainer = "container:TEDx_OpenCV_Demo.xcodeproj">
+            BuildableName = "OpenCV_Demo_Base.app"
+            BlueprintName = "OpenCV_Demo_Base"
+            ReferencedContainer = "container:OpenCV_Demo_Base.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

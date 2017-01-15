@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-               BuildableName = "Object_Tracking.app"
-               BlueprintName = "Object_Tracking"
-               ReferencedContainer = "container:Object_Tracking.xcodeproj">
+               BlueprintIdentifier = "007351DE1C9361D300660883"
+               BuildableName = "GCV_iOS.app"
+               BlueprintName = "GCV_iOS"
+               ReferencedContainer = "container:GCV_iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-            BuildableName = "Object_Tracking.app"
-            BlueprintName = "Object_Tracking"
-            ReferencedContainer = "container:Object_Tracking.xcodeproj">
+            BlueprintIdentifier = "007351DE1C9361D300660883"
+            BuildableName = "GCV_iOS.app"
+            BlueprintName = "GCV_iOS"
+            ReferencedContainer = "container:GCV_iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-            BuildableName = "Object_Tracking.app"
-            BlueprintName = "Object_Tracking"
-            ReferencedContainer = "container:Object_Tracking.xcodeproj">
+            BlueprintIdentifier = "007351DE1C9361D300660883"
+            BuildableName = "GCV_iOS.app"
+            BlueprintName = "GCV_iOS"
+            ReferencedContainer = "container:GCV_iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "281E472C1DC167B300AFB85D"
-            BuildableName = "Object_Tracking.app"
-            BlueprintName = "Object_Tracking"
-            ReferencedContainer = "container:Object_Tracking.xcodeproj">
+            BlueprintIdentifier = "007351DE1C9361D300660883"
+            BuildableName = "GCV_iOS.app"
+            BlueprintName = "GCV_iOS"
+            ReferencedContainer = "container:GCV_iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "289222FD1DDD10DA0090F637"
-               BuildableName = "TEDx_OpenCV_macOS.app"
-               BlueprintName = "TEDx_OpenCV_macOS"
-               ReferencedContainer = "container:TEDx_OpenCV_macOS.xcodeproj">
+               BlueprintIdentifier = "281E472C1DC167B300AFB85D"
+               BuildableName = "OpenCV_iOS.app"
+               BlueprintName = "OpenCV_iOS"
+               ReferencedContainer = "container:OpenCV_iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,34 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "289223131DDD10DA0090F637"
-               BuildableName = "TEDx_OpenCV_macOSTests.xctest"
-               BlueprintName = "TEDx_OpenCV_macOSTests"
-               ReferencedContainer = "container:TEDx_OpenCV_macOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2892231E1DDD10DA0090F637"
-               BuildableName = "TEDx_OpenCV_macOSUITests.xctest"
-               BlueprintName = "TEDx_OpenCV_macOSUITests"
-               ReferencedContainer = "container:TEDx_OpenCV_macOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "289222FD1DDD10DA0090F637"
-            BuildableName = "TEDx_OpenCV_macOS.app"
-            BlueprintName = "TEDx_OpenCV_macOS"
-            ReferencedContainer = "container:TEDx_OpenCV_macOS.xcodeproj">
+            BlueprintIdentifier = "281E472C1DC167B300AFB85D"
+            BuildableName = "OpenCV_iOS.app"
+            BlueprintName = "OpenCV_iOS"
+            ReferencedContainer = "container:OpenCV_iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "289222FD1DDD10DA0090F637"
-            BuildableName = "TEDx_OpenCV_macOS.app"
-            BlueprintName = "TEDx_OpenCV_macOS"
-            ReferencedContainer = "container:TEDx_OpenCV_macOS.xcodeproj">
+            BlueprintIdentifier = "281E472C1DC167B300AFB85D"
+            BuildableName = "OpenCV_iOS.app"
+            BlueprintName = "OpenCV_iOS"
+            ReferencedContainer = "container:OpenCV_iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "289222FD1DDD10DA0090F637"
-            BuildableName = "TEDx_OpenCV_macOS.app"
-            BlueprintName = "TEDx_OpenCV_macOS"
-            ReferencedContainer = "container:TEDx_OpenCV_macOS.xcodeproj">
+            BlueprintIdentifier = "281E472C1DC167B300AFB85D"
+            BuildableName = "OpenCV_iOS.app"
+            BlueprintName = "OpenCV_iOS"
+            ReferencedContainer = "container:OpenCV_iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

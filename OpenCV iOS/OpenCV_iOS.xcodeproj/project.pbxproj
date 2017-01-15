@@ -42,7 +42,7 @@
 		004EFB331DEB9B26000537AB /* PRFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRFViewController.m; sourceTree = "<group>"; };
 		004EFB381DEB9BD9000537AB /* MLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLViewController.h; path = ../MLViewController.h; sourceTree = "<group>"; };
 		004EFB391DEB9BDA000537AB /* MLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MLViewController.mm; path = ../MLViewController.mm; sourceTree = "<group>"; };
-		281E472D1DC167B300AFB85D /* Object_Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Object_Tracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		281E472D1DC167B300AFB85D /* OpenCV_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCV_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281E47311DC167B300AFB85D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		281E47331DC167B300AFB85D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		281E47341DC167B300AFB85D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		281E472E1DC167B300AFB85D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				281E472D1DC167B300AFB85D /* Object_Tracking.app */,
+				281E472D1DC167B300AFB85D /* OpenCV_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,9 +208,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		281E472C1DC167B300AFB85D /* Object_Tracking */ = {
+		281E472C1DC167B300AFB85D /* OpenCV_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 281E475A1DC167B300AFB85D /* Build configuration list for PBXNativeTarget "Object_Tracking" */;
+			buildConfigurationList = 281E475A1DC167B300AFB85D /* Build configuration list for PBXNativeTarget "OpenCV_iOS" */;
 			buildPhases = (
 				281E47291DC167B300AFB85D /* Sources */,
 				281E472A1DC167B300AFB85D /* Frameworks */,
@@ -220,9 +220,9 @@
 			);
 			dependencies = (
 			);
-			name = Object_Tracking;
+			name = OpenCV_iOS;
 			productName = Object_Tracking;
-			productReference = 281E472D1DC167B300AFB85D /* Object_Tracking.app */;
+			productReference = 281E472D1DC167B300AFB85D /* OpenCV_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +241,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 281E47281DC167B300AFB85D /* Build configuration list for PBXProject "Object_Tracking" */;
+			buildConfigurationList = 281E47281DC167B300AFB85D /* Build configuration list for PBXProject "OpenCV_iOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -254,7 +254,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				281E472C1DC167B300AFB85D /* Object_Tracking */,
+				281E472C1DC167B300AFB85D /* OpenCV_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -412,7 +412,7 @@
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/Neil/Documents/Developer/Apple/Softwares/iOS/Object_Tracking/Object_Tracking/Utils/object_tracking.pch;
+				GCC_PREFIX_HEADER = "/Users/YongyangNie/Desktop/TEDx_Demo/OpenCV iOS/Object_Tracking/Utils/object_tracking.pch";
 				INFOPLIST_FILE = Object_Tracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -436,7 +436,7 @@
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = /Users/Neil/Documents/Developer/Apple/Softwares/iOS/Object_Tracking/Object_Tracking/Utils/object_tracking.pch;
+				GCC_PREFIX_HEADER = "/Users/YongyangNie/Desktop/TEDx_Demo/OpenCV iOS/Object_Tracking/Utils/object_tracking.pch";
 				INFOPLIST_FILE = Object_Tracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -449,7 +449,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		281E47281DC167B300AFB85D /* Build configuration list for PBXProject "Object_Tracking" */ = {
+		281E47281DC167B300AFB85D /* Build configuration list for PBXProject "OpenCV_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				281E47581DC167B300AFB85D /* Debug */,
@@ -458,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		281E475A1DC167B300AFB85D /* Build configuration list for PBXNativeTarget "Object_Tracking" */ = {
+		281E475A1DC167B300AFB85D /* Build configuration list for PBXNativeTarget "OpenCV_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				281E475B1DC167B300AFB85D /* Debug */,

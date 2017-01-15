@@ -4,25 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TEDx_GCV_Demo.xcscheme</key>
+		<key>OpenCV_iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>007351DE1C9361D300660883</key>
+		<key>281E472C1DC167B300AFB85D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>007351F71C9361D300660883</key>
+		<key>281E47451DC167B300AFB85D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>007352021C9361D300660883</key>
+		<key>281E47501DC167B300AFB85D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

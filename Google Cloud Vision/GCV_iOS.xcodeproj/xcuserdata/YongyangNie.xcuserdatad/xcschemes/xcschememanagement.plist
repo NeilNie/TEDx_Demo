@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Object_Tracking.xcscheme_^#shared#^_</key>
+		<key>GCV_Demo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>281E472C1DC167B300AFB85D</key>
+		<key>007351DE1C9361D300660883</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>281E47451DC167B300AFB85D</key>
+		<key>007351F71C9361D300660883</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>281E47501DC167B300AFB85D</key>
+		<key>007352021C9361D300660883</key>
 		<dict>
 			<key>primary</key>
 			<true/>

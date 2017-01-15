@@ -139,7 +139,7 @@
 		0051EE371C95F4F2001AFBB6 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		0060833A1CC3FFEE00A344F1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		006A06411E11702F0093D501 /* GCV_Demo_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GCV_Demo_icon.png; sourceTree = "<group>"; };
-		007351DF1C9361D300660883 /* GCV_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCV_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		007351DF1C9361D300660883 /* GCV_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCV_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007351E31C9361D300660883 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		007351E51C9361D300660883 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		007351E61C9361D300660883 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -318,7 +318,7 @@
 		007351E01C9361D300660883 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				007351DF1C9361D300660883 /* GCV_Demo.app */,
+				007351DF1C9361D300660883 /* GCV_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -607,9 +607,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		007351DE1C9361D300660883 /* GCV_Demo */ = {
+		007351DE1C9361D300660883 /* GCV_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0073520C1C9361D300660883 /* Build configuration list for PBXNativeTarget "GCV_Demo" */;
+			buildConfigurationList = 0073520C1C9361D300660883 /* Build configuration list for PBXNativeTarget "GCV_iOS" */;
 			buildPhases = (
 				007351DB1C9361D300660883 /* Sources */,
 				007351DC1C9361D300660883 /* Frameworks */,
@@ -620,9 +620,9 @@
 			);
 			dependencies = (
 			);
-			name = GCV_Demo;
+			name = GCV_iOS;
 			productName = ScanIt;
-			productReference = 007351DF1C9361D300660883 /* GCV_Demo.app */;
+			productReference = 007351DF1C9361D300660883 /* GCV_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -654,7 +654,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 007351DA1C9361D300660883 /* Build configuration list for PBXProject "GCV_Demo" */;
+			buildConfigurationList = 007351DA1C9361D300660883 /* Build configuration list for PBXProject "GCV_iOS" */;
 			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -667,7 +667,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				007351DE1C9361D300660883 /* GCV_Demo */,
+				007351DE1C9361D300660883 /* GCV_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -920,7 +920,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.tedx-gcv-demo";
-				PRODUCT_NAME = GCV_Demo;
+				PRODUCT_NAME = GCV_iOS;
 			};
 			name = Debug;
 		};
@@ -940,14 +940,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.tedx-gcv-demo";
-				PRODUCT_NAME = GCV_Demo;
+				PRODUCT_NAME = GCV_iOS;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		007351DA1C9361D300660883 /* Build configuration list for PBXProject "GCV_Demo" */ = {
+		007351DA1C9361D300660883 /* Build configuration list for PBXProject "GCV_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0073520A1C9361D300660883 /* Debug */,
@@ -956,7 +956,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0073520C1C9361D300660883 /* Build configuration list for PBXNativeTarget "GCV_Demo" */ = {
+		0073520C1C9361D300660883 /* Build configuration list for PBXNativeTarget "GCV_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0073520D1C9361D300660883 /* Debug */,
