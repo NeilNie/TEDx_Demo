@@ -15,6 +15,7 @@
 #import "MLManager.h"
 #import "ImageUtils.h"
 #import "MLViewController.h"
+#import "ProcessImageViewController.h"
 
 #ifdef DEBUG
 #import "FPS.h"

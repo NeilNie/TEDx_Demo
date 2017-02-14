@@ -26,30 +26,39 @@
     std::vector<cv::Point> maxMser = [ImageUtils maxMser: &gray];
     
     [MLManager sharedInstance].logoTemplate = [[MSERManager sharedInstance] extractFeature: &maxMser];
-    [MLManager sharedInstance].logoTemplate.name = [self.imageArray objectAtIndex:[self.table indexPathForSelectedRow].row];
+    [MLManager sharedInstance].logoTemplate.name = [self.imageArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     
     //store the feature
     [[MLManager sharedInstance] storeTemplate];
     
+    self.results = [[NSMutableArray alloc] init];
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Learned Successfully"
-                                                    message:[NSString stringWithFormat:@"The template have been learned. numberOfHoles %li \n convexHullAreaRate: %f \n minRectAreaRate: %f \n skeletLengthRate: %f \n contourAreaRate: %f", (long)[MLManager sharedInstance].logoTemplate.numberOfHoles, [MLManager sharedInstance].logoTemplate.convexHullAreaRate, [MLManager sharedInstance].logoTemplate.minRectAreaRate, [MLManager sharedInstance].logoTemplate.skeletLengthRate, [MLManager sharedInstance].logoTemplate.contourAreaRate]
+                                                    message:@"The template have been learned"
                                                    delegate:nil
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:nil, nil];
+                          
+    [self.results addObject:[NSString stringWithFormat:@"number Of Holes %li", (long)[MLManager sharedInstance].logoTemplate.numberOfHoles]];
+    [self.results addObject:[NSString stringWithFormat:@"convex Hull AreaRate: %f", [MLManager sharedInstance].logoTemplate.convexHullAreaRate]];
+    [self.results addObject:[NSString stringWithFormat:@"min Rect Area Rate: %f", [MLManager sharedInstance].logoTemplate.minRectAreaRate]];
+    [self.results addObject:[NSString stringWithFormat:@"contour Area Rate: %f", [MLManager sharedInstance].logoTemplate.skeletLengthRate]];
+    [self.results addObject:[NSString stringWithFormat:@"skelet Length Rate: %f", [MLManager sharedInstance].logoTemplate.contourAreaRate]];
     
     [alert show];
     
-    [self.mserView setImage:[ImageUtils UIImageFromCVMat: [ImageUtils mserToMat:&maxMser]]];
+    self.mserImage = [ImageUtils UIImageFromCVMat: [ImageUtils mserToMat:&maxMser]];
 }
 
 #pragma mark - UITableView Delegates
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    self.imageView.image = [UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]];
+    self.image = [UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]];
     [self learn:[UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]]];
     [[NSUserDefaults standardUserDefaults] setObject:[self.imageArray objectAtIndex:indexPath.row] forKey:@"imagename"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.delegate updateImage:self.image mser:self.mserImage learnResult:self.results];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -77,9 +86,9 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"imagename"]) {
-        self.imageView.image = [UIImage imageNamed:[defaults objectForKey:@"imagename"]];
+        self.image = [UIImage imageNamed:[defaults objectForKey:@"imagename"]];
         
-        cv::Mat image = [ImageUtils cvMatFromUIImage: self.imageView.image];
+        cv::Mat image = [ImageUtils cvMatFromUIImage: self.image];
         
         //get gray image
         cv::Mat gray;
@@ -88,7 +97,7 @@
         //mser with maximum area is
         std::vector<cv::Point> maxMser = [ImageUtils maxMser: &gray];
         
-        [self.mserView setImage:[ImageUtils UIImageFromCVMat: [ImageUtils mserToMat:&maxMser]]];
+        self.mserImage = [ImageUtils UIImageFromCVMat: [ImageUtils mserToMat:&maxMser]];
     }
 }
 
@@ -109,14 +118,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

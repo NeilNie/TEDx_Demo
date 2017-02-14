@@ -30,6 +30,7 @@
 		284B958B1DDE66F000E3D249 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284B958A1DDE66F000E3D249 /* GLKit.framework */; };
 		284B958D1DDE66F500E3D249 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284B958C1DDE66F500E3D249 /* OpenGLES.framework */; };
 		284B958F1DDE66FB00E3D249 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284B958E1DDE66FB00E3D249 /* QuartzCore.framework */; };
+		289556991E51DE140001AF23 /* ProcessImageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 289556981E51DE140001AF23 /* ProcessImageViewController.mm */; };
 		28AA98541DD7E9FC00C8F990 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28AA98531DD7E9FC00C8F990 /* Launch Screen.storyboard */; };
 		28EE38EB1DF48F7F006398A8 /* Settings_000000_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EE38EA1DF48F7F006398A8 /* Settings_000000_100.png */; };
 		28EE38ED1DF49001006398A8 /* Info_000000_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EE38EC1DF49001006398A8 /* Info_000000_100.png */; };
@@ -72,6 +73,9 @@
 		284B958A1DDE66F000E3D249 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		284B958C1DDE66F500E3D249 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		284B958E1DDE66FB00E3D249 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		289556971E51DE140001AF23 /* ProcessImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessImageViewController.h; sourceTree = "<group>"; };
+		289556981E51DE140001AF23 /* ProcessImageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ProcessImageViewController.mm; sourceTree = "<group>"; };
+		28A35FE31E5277BD0067C6D2 /* MLViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MLViewControllerDelegate.h; sourceTree = "<group>"; };
 		28AA98531DD7E9FC00C8F990 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		28DCF3E11DDE9974000E673C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		28EE38EA1DF48F7F006398A8 /* Settings_000000_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_000000_100.png; sourceTree = "<group>"; };
@@ -150,6 +154,9 @@
 		281E47631DC167CA00AFB85D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				28A35FE31E5277BD0067C6D2 /* MLViewControllerDelegate.h */,
+				289556971E51DE140001AF23 /* ProcessImageViewController.h */,
+				289556981E51DE140001AF23 /* ProcessImageViewController.mm */,
 				004EFB381DEB9BD9000537AB /* MLViewController.h */,
 				004EFB391DEB9BDA000537AB /* MLViewController.mm */,
 				282002111DC691220013A603 /* CameraViewController.h */,
@@ -288,6 +295,7 @@
 				004EFB341DEB9B26000537AB /* PRFViewController.m in Sources */,
 				282002071DC691120013A603 /* MLManager.mm in Sources */,
 				281E47321DC167B300AFB85D /* main.m in Sources */,
+				289556991E51DE140001AF23 /* ProcessImageViewController.mm in Sources */,
 				282002131DC691220013A603 /* CameraViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +426,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.Object-Tracking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -442,6 +451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.Object-Tracking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

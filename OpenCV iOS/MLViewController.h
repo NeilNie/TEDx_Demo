@@ -10,17 +10,14 @@
 #import "MLManager.h"
 #import "MSERManager.h"
 #import "ImageUtils.h"
+#import "MLViewControllerDelegate.h"
 
-@interface MLViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface MLViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray *imageArray;
-@property (weak, nonatomic) IBOutlet UITableView *table;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIImageView *mserView;
-
-@end
-
-@protocol MLViewControllerDelegate <NSObject>
-
+@property (strong, nonatomic) NSMutableArray *results;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImage *mserImage;
+@property (retain, nonatomic) id delegate;
 
 @end

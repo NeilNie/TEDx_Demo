@@ -52,6 +52,22 @@
     });
 }
 
+-(IBAction)pushViewController:(id)sender{
+    
+    UISplitViewController *splitViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SplitVC"];
+    
+    //Grab a reference to the RightViewController and set it as the SVC's delegate.
+    ProcessImageViewController *rightViewController = [splitViewController.viewControllers lastObject];
+
+    UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+    MLViewController *leftViewController = (MLViewController *)[leftNavController topViewController];
+
+    //Set the RightViewController as the left's delegate.
+    leftViewController.delegate = rightViewController;
+    
+    [self presentViewController:splitViewController animated:YES completion:nil];
+}
+
 -(void)processImage:(cv::Mat &)image{
     
     if (!started){
