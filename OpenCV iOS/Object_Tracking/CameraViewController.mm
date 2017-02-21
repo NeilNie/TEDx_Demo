@@ -33,7 +33,7 @@
     camera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     camera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
     camera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
-    camera.defaultFPS = 15;
+    camera.defaultFPS = 30;
     camera.grayscaleMode = NO;
     camera.delegate = self;
     
@@ -71,7 +71,9 @@
 -(void)processImage:(cv::Mat &)image{
     
     if (!started){
-        [FPS draw: image]; return; }
+        [FPS draw: image];
+        return;
+    }
     
     //convert it into gray image
     cv::Mat gray;
@@ -100,7 +102,6 @@
                 }
                 cv::Rect bound = cv::boundingRect(*bestMser);
                 cv::rectangle(image, bound, GREEN, 3);
-                //[ImageUtils drawMser: &mser intoImage: &image withColor: GREEN];
             }
         }
     });

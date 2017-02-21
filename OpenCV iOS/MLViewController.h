@@ -12,12 +12,15 @@
 #import "ImageUtils.h"
 #import "MLViewControllerDelegate.h"
 
-@interface MLViewController : UITableViewController
+@interface MLViewController : UITableViewController{
+    cv::MserFeatureDetector mserDetector;
+}
 
 @property (strong, nonatomic) NSMutableArray *imageArray;
 @property (strong, nonatomic) NSMutableArray *results;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImage *mserImage;
+@property (strong, nonatomic) UIImage *processedImage;
 @property (retain, nonatomic) id delegate;
 
 @end

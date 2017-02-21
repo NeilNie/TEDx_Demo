@@ -21,7 +21,6 @@
 
 @property (strong) NSDictionary *preference;
 
-@property (strong, nonatomic) NSMutableArray <MSERFeature *> *templates;
 @property (strong) MSERFeature *logoTemplate;
 
 + (MLManager *) sharedInstance;

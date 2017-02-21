@@ -14,6 +14,50 @@
 
 @implementation MLViewController
 
+- (void) detectRegions: (cv::Mat &) gray intoVector: (std::vector<std::vector<cv::Point>> &) vector{
+    mserDetector(gray, vector);
+}
+
+-(void)processImage:(UIImage *)templateImage{
+    
+    NSMutableArray *array = [NSMutableArray array];
+    
+    cv::Mat image = [ImageUtils cvMatFromUIImage:templateImage];
+    
+    cv::Mat testImage;
+    cv::cvtColor(image, testImage, CV_BGR2GRAY);
+    
+    std::vector<std::vector<cv::Point>> contours;
+    
+    int delta = 5;                  //! delta, in the code, it compares (size_{i}-size_{i-delta})/size_{i-delta}
+    int minArea = 60;               //! prune the area which bigger than maxArea
+    int maxArea = 14400;            //! prune the area which smaller than minArea
+    double maxVariation = 0.25;     //! prune the area have simliar size to its children
+    double minDiversity = 0.2;      //! trace back to cut off mser with diversity < min_diversity
+    int maxEvolution = 200;         //! for color image, the evolution steps
+    double areaThreshold = 1.01;    //! the area threshold to cause re-initialize
+    double minMargin = 0.003;       //! ignore too small margin
+    int edgeBlurSize = 0;           //! the aperture size for edge blur
+    
+    mserDetector = cv::MserFeatureDetector(delta, minArea, maxArea,
+                                           maxVariation, minDiversity, maxEvolution,
+                                           areaThreshold, minMargin, edgeBlurSize
+                                           );
+    
+    [self detectRegions:testImage intoVector:contours];
+    
+    for (int i = 0; i < contours.size(); i++) {
+        MSERFeature *feature = [[MSERManager sharedInstance] extractFeature:&contours[i]];
+        if (feature) {
+            cv::Rect bound = cv::boundingRect(contours[i]);
+            cv::rectangle(image, bound, CV_RGB(41, 257, 47));
+            [array addObject:feature];
+        }
+    }
+    
+    self.processedImage = [ImageUtils UIImageFromCVMat:image];
+}
+ 
 - (void) learn: (UIImage *) templateImage{
     
     cv::Mat image = [ImageUtils cvMatFromUIImage: templateImage];
@@ -58,7 +102,8 @@
     [self learn:[UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]]];
     [[NSUserDefaults standardUserDefaults] setObject:[self.imageArray objectAtIndex:indexPath.row] forKey:@"imagename"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.delegate updateImage:self.image mser:self.mserImage learnResult:self.results];
+    [self processImage:self.image];
+    [self.delegate updateImage:self.processedImage mser:self.mserImage learnResult:self.results];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

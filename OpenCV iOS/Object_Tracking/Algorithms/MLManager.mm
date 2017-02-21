@@ -96,11 +96,11 @@
         return NO; 
     }
     
-    if ( fabs(_logoTemplate.convexHullAreaRate - feature.convexHullAreaRate) > 0.05) { // 0.1) {
+    if ( fabs(_logoTemplate.convexHullAreaRate - feature.convexHullAreaRate) > 0.1) { // 0.1) {
         //NSLog(@"convexHullAreaRate \t\t\t\t %f", fabs(_logoTemplate.convexHullAreaRate - feature.convexHullAreaRate));
         return NO;
     }
-    if ( fabs(_logoTemplate.minRectAreaRate - feature.minRectAreaRate) > 0.05) { // 0.1) {
+    if ( fabs(_logoTemplate.minRectAreaRate - feature.minRectAreaRate) > 0.1) { // 0.1) {
         //NSLog(@"minRectAreaRate \t\t\t\t %f", fabs(_logoTemplate.minRectAreaRate - feature.minRectAreaRate));
         return NO;
     }
@@ -108,7 +108,7 @@
         //NSLog(@"skeletLengthRate \t\t\t\t %f", fabs(_logoTemplate.skeletLengthRate - feature.skeletLengthRate));
         return NO;
     }
-    if ( fabs(_logoTemplate.contourAreaRate - feature.contourAreaRate) > 0.1) {//0.2) {
+    if ( fabs(_logoTemplate.contourAreaRate - feature.contourAreaRate) > 0.2) {//0.2) {
         //NSLog(@"contourAreaRate \t\t\t\t %f", fabs(_logoTemplate.contourAreaRate - feature.contourAreaRate));
         return NO;
     }
